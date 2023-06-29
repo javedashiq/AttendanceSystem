@@ -108,12 +108,14 @@ def register():
         image_count = capture_images(folder_path, num_images, frame_interval)
         print(f"{image_count} images captured and stored in folder: {folder_path}")
         return "Registration complete"
+        filename = 'venv/model.py'
+        exec(open(filename).read())
     return render_template('register.html')
 
 
 @app.route('/attendance', methods=['GET', 'POST'])
 def attendance():
-    model = load_model("data/newmodel.h5")
+    model = load_model("data/face.h5")
     face_cascade = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml.xml')
 
     dataset_path = 'D:/face'
